@@ -26,7 +26,7 @@
         html, body {
             height: 100%;
             margin: 0;
-            overflow: hidden; /* Hide scrollbar for the background Spline */
+            /* Removed overflow: hidden to allow scrolling on mobile */
         }
         body {
             font-family: 'Roboto', sans-serif; /* Changed to Roboto as primary font */
@@ -68,7 +68,7 @@
             display: flex;
             flex-direction: column;
             overflow-y: auto; /* Allow scrolling for content */
-            height: 100vh; /* Ensure content wrapper takes full viewport height */
+            min-height: 100vh; /* Ensure content wrapper takes at least full viewport height */
             /* Crucial for Spline interactivity: allow pointer events to pass through */
             pointer-events: none;
         }
@@ -96,6 +96,7 @@
             border-radius: 0; /* No border-radius */
             box-shadow: none; /* No shadow */
             padding: 4rem 0; /* More vertical space for sections */
+            text-align: left; /* Consistent left alignment for all section content */
         }
 
         /* Project card background adjusted for readability over Spline */
@@ -132,12 +133,12 @@
         }
 
         /* Custom text size classes */
-        .text-hero-title { font-size: var(--text-hero-title); font-weight: 700; } /* Roboto Bold */
-        .text-hero-subtitle { font-size: var(--text-hero-subtitle); font-weight: 700; } /* Roboto Bold */
-        .text-section-title { font-size: var(--text-section-title); font-weight: 700; } /* Roboto Bold */
-        .text-project-title { font-size: var(--text-project-title); font-weight: 700; } /* Roboto Bold */
-        .text-body-lg { font-size: var(--text-body-lg); }
-        .text-body-md { font-size: var(--text-body-md); }
+        .text-hero-title { font-size: var(--text-hero-title); font-weight: 700; text-align: center; } /* Roboto Bold, center for hero */
+        .text-hero-subtitle { font-size: var(--text-hero-subtitle); font-weight: 700; text-align: center; } /* Roboto Bold, center for hero */
+        .text-section-title { font-size: var(--text-section-title); font-weight: 700; text-align: left; } /* Roboto Bold, left for sections */
+        .text-project-title { font-size: var(--text-project-title); font-weight: 700; text-align: left; } /* Roboto Bold, left for projects */
+        .text-body-lg { font-size: var(--text-body-lg); text-align: left; }
+        .text-body-md { font-size: var(--text-body-md); text-align: left; }
         .text-nav-link { font-size: var(--text-nav-link); }
 
         /* Responsive adjustments for custom text sizes */
@@ -166,7 +167,7 @@
             bottom: 1.5rem; /* Slightly decreased */
             left: 1.5rem; /* Slightly decreased */
             z-index: 100; /* Ensure it's above other content */
-            background-color: #1a73e8; /* Google Blue */
+            background-color: #007BFF; /* Pure blue, no purple/pink */
             color: white;
             border-radius: 9999px; /* Fully rounded */
             padding: 0.8rem; /* Slightly decreased */
@@ -328,15 +329,15 @@
             border: 1px solid rgba(0, 255, 255, 0.3); /* Subtle aqua border */
         }
         .starter-message:hover {
-            background-color: rgba(0, 123, 255, 0.3);
+            background-color: rgba(0, 123, 255, 0.35); /* Slightly more blue, no purple */
         }
 
         /* Responsive adjustments for chat window */
         @media (max-width: 768px) {
             #geminiChatWindow {
-                width: 90%; /* Wider on small screens */
-                height: 75%; /* Taller on small screens */
-                left: 5%; /* Center horizontally */
+                width: 95%; /* Wider on small screens */
+                height: 80%; /* Taller on small screens */
+                left: 2.5%; /* Center horizontally */
                 bottom: 1rem; /* Closer to bottom */
             }
             #geminiButton {
@@ -347,6 +348,10 @@
             #geminiButton svg {
                 width: 1.2rem; /* Further reduced for mobile */
                 height: 1.2rem; /* Further reduced for mobile */
+            }
+            section {
+                padding: 2.5rem 0; /* Less vertical space on mobile */
+                text-align: left; /* Always left on mobile */
             }
         }
 
@@ -382,6 +387,11 @@
             border-radius: 1.5rem; /* Consistent rounded corners */
             padding: 2rem; /* Add padding to the text container */
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5); /* Add a subtle shadow */
+            text-align: left;
+        }
+        /* Force Get in Touch button to use blue-cyan gradient, not purple/pink */
+        .bg-gradient-to-r.from-blue-600.to-cyan-500 {
+            background-image: linear-gradient(to right, #007BFF, #00FFFF) !important;
         }
     </style>
 </head>
